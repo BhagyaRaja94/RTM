@@ -8,12 +8,12 @@ import org.testng.annotations.DataProvider;
     features = "src/test/resources/features",
     glue = {"org.rtm.systemtest.cucumber.tank_master"},
     plugin = {"pretty",
-        "com.az.ip.dmdp.systemtest.cucumber.commons.FeatureScenarioLogger",
+        "org.rtm.systemtest.cucumber.tankmaster.utilities.FeatureScenarioLogger",
         "rerun:target/failed_scenarios.txt",
         "html:target/cucumber-reports/cucumber.html",
     }
     )
-public class CucumberRunner extends AbstractTestNGCucumberTests {
+public class RunCucumberTest extends AbstractTestNGCucumberTests {
 
     @Override
     @DataProvider(parallel = true)
