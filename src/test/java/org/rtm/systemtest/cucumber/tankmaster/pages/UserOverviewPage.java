@@ -3,6 +3,7 @@ package org.rtm.systemtest.cucumber.tankmaster.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.rtm.systemtest.cucumber.tankmaster.managers.WaitManager;
 
@@ -13,6 +14,9 @@ public class UserOverviewPage {
     private WebDriver driver;
     private final WaitManager waitManager;
 
+    @FindBy(id = "OverviewButtonId")
+    WebElement overviewTab;
+
 
     public UserOverviewPage(WebDriver driver, WaitManager waitManager) {
         this.driver = driver;
@@ -20,7 +24,7 @@ public class UserOverviewPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void addTankToWatchlist( int tankIndex) {
+    public void addTankToWatchlist(int tankIndex) {
         List<WebElement> watchIcons = driver.findElements(By.cssSelector(".watch-icon.svg-inline--fa.fa-star.fa-w-18"));
         watchIcons.get(tankIndex).click();
     }
@@ -32,5 +36,11 @@ public class UserOverviewPage {
     public WebElement getAllTanksTab() {
         return waitManager.setupFluentWait().until(x -> driver.findElement(By.xpath("//span[contains(text(), 'All Tanks')]")));
     }
-}
 
+    public void navigateToOverviewTab() {
+        waitManager.waitForVisibility(overviewTab);
+        overviewTab.click();
+        waitManager.setupFluentWait().until(x -> driver.findElement(By.xpath("//span[contains(text(), 'Overview')]")));
+    }
+
+}

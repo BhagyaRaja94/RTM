@@ -23,6 +23,12 @@ public class UserOverviewPageStepDefs {
         screenshotManager = testContext.getScreenshotManager();
     }
 
+    @When("user navigates to User Overview page")
+    public void userNavigatesToUserOverviewPage() {
+        userOverviewPage.navigateToOverviewTab();
+        screenshotManager.takePageScreenShot(pageScreenshotsFolderPath + "Overview_" + LocalDateTime.now() + "_PageScreenshot.png");
+    }
+
     @Then("verify {string} user is logged in successfully with user name displayed on the page")
     public void verifyUserIsLoggedIn(String userName) {
         assertThat(userOverviewPage.getProfileSpan(userName).isDisplayed()).isTrue();

@@ -9,6 +9,10 @@ Feature: WatchList Screen in Tank Master
     When user adds tank with name "TK-101" to watch list
     Then verify user is able to see tank with name "TK-101" in watch list
 
+    When user navigates to User Overview page
+    And user adds tank with name "TK-102" to watch list
+    Then verify user is able to see tank with name "TK-102" in watch list
+
     When user removes tank with name "TK-101" from watch list
     Then verify user is not able to see tank with name "TK-101" in watch list
 
