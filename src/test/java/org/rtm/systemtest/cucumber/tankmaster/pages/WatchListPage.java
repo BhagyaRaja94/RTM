@@ -36,7 +36,7 @@ public class WatchListPage {
     }
 
     public void removeTankToWatchlist( int tankIndex) {
-        List<WebElement> starIcons = driver.findElements(By.id("fa-star-solid-AId"));
+        List<WebElement> starIcons = driver.findElements(By.cssSelector("svg.watch-icon.fa-star"));
         starIcons.get(tankIndex).click();
     }
 
