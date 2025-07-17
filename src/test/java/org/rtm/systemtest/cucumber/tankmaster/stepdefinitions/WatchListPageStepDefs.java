@@ -43,9 +43,7 @@ public class WatchListPageStepDefs {
 
     @When("verify user is not able to see tank with name {string} in watch list")
     public void verifyTankRemovedFromWatchList(String tankName) {
-        int tankNumber = Integer.parseInt(tankName.replaceAll("\\D+", ""))-100;// Assuming tank names are like "Tank 100", "Tank 101", etc.
-        int tankIndex = tankNumber - 1; // Adjusting index to be zero-based
-        assertThat(watchListPage.getTankHeaderTitle(tankIndex).getText()).isNotEqualTo(tankName);
-        screenshotManager.takePageScreenShot(pageScreenshotsFolderPath + "WatchList_" + LocalDateTime.now() + "_PageScreenshot.png");
+        assertThat(watchListPage.getNoTankMessage().isDisplayed()).isTrue();
+
     }
 }
